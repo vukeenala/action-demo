@@ -1,5 +1,9 @@
 name: GitHub Actions Demo
 on: [push]
+env:
+  DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
+  DEPLOY_DOMAIN: 'DOMAIN_${DEPLOY_ENV}'
+  DEPLOY_ENV_DOMAIN: '${{ secrets[env.DEPLOY_DOMAIN] }}'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest   
@@ -14,9 +18,4 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - if: ${{ env.DEPLOY_DOMAIN == 'DOMAIN_QA' }}
-        run: echo "this is the qa domain" 
-        env:
-          DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
-          DEPLOY_DOMAIN: 'DOMAIN_${{ env[DEPLOY_ENV] }}'
-          DEPLOY_ENV_DOMAIN: '${{ secrets[env.DEPLOY_DOMAIN] }}'  
-      
+        run: echo "this is the qa domain"
