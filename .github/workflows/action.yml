@@ -19,4 +19,4 @@ jobs:
       - if: ${{ env.DEPLOY_ENV_DOMAIN == 'qa.mousiki.io' }}
         run: echo "this is the qa.mousiki.io domain"
         env:
-          DEPLOY_ENV_DOMAIN: '${{ secrets[${env.DEPLOY_DOMAIN}] }}'
+          DEPLOY_ENV_DOMAIN: '${{ secrets[env.DEPLOY_DOMAIN] }}'
