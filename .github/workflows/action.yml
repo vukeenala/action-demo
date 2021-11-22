@@ -17,6 +17,6 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - if: ${{ env.DEPLOY_ENV_DOMAIN == 'qa.mousiki.io' }}
-        run: echo "this is the qa.mousiki.io domain"
+        run: echo "this is the qa mousiki io domain"
         env:
           DEPLOY_ENV_DOMAIN: '${{ secrets[env.DEPLOY_DOMAIN] }}'
