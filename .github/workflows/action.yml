@@ -18,4 +18,4 @@ jobs:
         env:
           DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
           DEPLOY_DOMAIN: ${{ secrets.DEPLOY_ENV }}_DOMAIN
-      - run: echo " the deployment environment is $DEPLOY_DOMAIN"
+      - run: echo " the deployment environment is ${{ env.DEPLOY_DOMAIN }}"
