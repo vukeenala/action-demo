@@ -1,8 +1,5 @@
 name: GitHub Actions Demo
 on: [push]
-env:
-  DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
-  DEPLOY_DOMAIN: '${DEPLOY_ENV}_DOMAIN'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest   
@@ -19,4 +16,6 @@ jobs:
       - if: ${{ env.DEPLOY_DOMAIN == 'QA' }}
         run: echo "this is the qa mousiki io domain"
         env:
+          DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
+          DEPLOY_DOMAIN: '${DEPLOY_ENV}_DOMAIN'
           DEPLOY_ENV_DOMAIN: '${{ secrets[env.DEPLOY_DOMAIN] }}'
