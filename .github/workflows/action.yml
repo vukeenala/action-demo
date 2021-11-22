@@ -3,7 +3,6 @@ on: [push]
 env:
   DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
   DEPLOY_DOMAIN: 'DOMAIN_${DEPLOY_ENV}'
-  DEPLOY_ENV_DOMAIN: '${{ secrets[${DEPLOY_DOMAIN}] }}'
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest   
