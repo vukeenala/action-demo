@@ -15,4 +15,4 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo " the deployment domain is ${{ secrets.${{secrets.DEPLOY_ENV}}_DOMAIN }}"
+      - run: echo " the deployment domain is ${{ secrets.${{ secrets.DEPLOY_ENV }}_DOMAIN }}"
