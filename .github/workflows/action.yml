@@ -17,5 +17,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
         env:
           DEPLOY_ENV: ${{ secrets.DEPLOY_ENV }}
-          DEPLOY_DOMAIN: ${{ secrets.DEPLOY_ENV }}_DOMAIN
-      - run: echo " the deployment environment ${{ secrets[env.DEPLOY_DOMAIN] }}"
+          DEPLOY_DOMAIN: ${{ env.DEPLOY_ENV }}_DOMAIN
+      - run: echo " the deployment environment is ${{ env.DEPLOY_ENV }}"
+      - run: echo " the deployment domain is ${{ env.DEPLOY_DOMAIN }}"
+      - run: echo " the deployment environment domain is ${{ secrets[env.DEPLOY_DOMAIN] }}"
