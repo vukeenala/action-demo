@@ -13,7 +13,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo " the deployment environment is $DEPLOY_ENV and domain is $DEPLOY_DOMAIN and $DEPLOY_ENV_DOMAIN"
       - if: "contains($DEPLOY_ENV, 'QA')"
         run: echo "QA Environment" 
         env:
