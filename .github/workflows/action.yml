@@ -11,11 +11,13 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: Setting credetials based on environment
-        run: |
+      
+      - run: |
           echo "DEPLOY_DOMAIN=${{ secrets.QA_DOMAIN }}" >> $GITHUB_ENV
-          if: env.DEPLOY_ENV == 'QA'
-          
+        if: env.DEPLOY_ENV == 'QA'
+        
+      - run: |
           echo "DEPLOY_DOMAIN=${{ secrets.DEV_DOMAIN }}" >> $GITHUB_ENV
-          if: env.DEPLOY_ENV == 'DEV'
+        if: env.DEPLOY_ENV == 'DEV'
+          
       - run: echo "this is the $DEPLOY_DOMAIN domain"
