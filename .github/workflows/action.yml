@@ -12,7 +12,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-          uses:
+          use:
             env:
               DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
       - run: |
