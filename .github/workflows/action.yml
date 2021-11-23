@@ -12,13 +12,15 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
-        env:
-          DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
-      - if: env.DEPLOY_ENV == 'QA'
-        env:
-          DEPLOY_DOMAIN: '${{ secrets.QA_DOMAIN }}'
-      - if: env.DEPLOY_ENV == 'DEV'
-        env:
-          DEPLOY_DOMAIN: '${{ secrets.DEV_DOMAIN }}'
+      - run: |
+          env:
+            DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
+      - run: |
+          if: env.DEPLOY_ENV == 'QA'
+          env:
+            DEPLOY_DOMAIN: '${{ secrets.QA_DOMAIN }}'
+      - run: |
+          if: env.DEPLOY_ENV == 'DEV'
+            env:
+              DEPLOY_DOMAIN: '${{ secrets.DEV_DOMAIN }}'
       - run: echo "this is the $DEPLOY_DOMAIN domain"
