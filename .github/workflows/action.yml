@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       ENVIRONMENT: '${{ secrets.DEPLOY_ENV }}'
-      DOMAIN: ${{ secrets[format('{0}_DOMAIN', env.ENVIRONMENT)] }}
+      DOMAIN: ${{ secrets[format('{0}_DOMAIN', $ENVIRONMENT)] }}
     steps:
       - run: echo $DOMAIN
