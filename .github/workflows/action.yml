@@ -5,10 +5,12 @@ on: [push]
 jobs:
 
   Explore-GitHub-Actions:
-    name: dev
+    name: setting secrets
     runs-on: ubuntu-18.04
     env:
       ENVIRONMENT: '${{ secrets.DEPLOY_ENV }}'
-      DOMAIN: ${{ secrets[format('{0}_DOMAIN', $ENVIRONMENT)] }}
     steps:
-      - run: echo $DOMAIN
+      - name: setting secrets
+        run: |
+          echo "DEPLOY_DOMAIN=${{ secrets[format('{0}_DOMAIN', env.ENVIRONMENT)] }}" >> $GITHUB_ENV
+          echo "The domain is $DEPLOY_DOMAIN"
