@@ -12,9 +12,9 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: |
-          env:
-            DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
+          uses:
+            env:
+              DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
       - run: |
           if: env.DEPLOY_ENV == 'QA'
           env:
