@@ -13,4 +13,5 @@ jobs:
       - name: setting secrets
         run: |
           echo "DEPLOY_DOMAIN=${{ secrets[format('{0}_DOMAIN', env.ENVIRONMENT)] }}" >> $GITHUB_ENV
+      - run:
           echo "The domain is $DEPLOY_DOMAIN"
