@@ -1,15 +1,13 @@
-name: Getting secrets based on environment
+name: Secrets
 
-on:
-  workflow_dispatch:
-    inputs:
-      env:
-        description: "Environment to deploy to"
-        required: true
+on: [push]
 
 jobs:
-  secrets:
-    name: secrets
+
+  Explore-GitHub-Actions:
+    name: dev
     runs-on: ubuntu-18.04
+    env:
+      ENVIRONMENT: '${{ secrets.DEPLOY_ENV }}'
     steps:
-      - run: echo ${{ secrets[format('{0}_DOMAIN', github.event.inputs.env)] }}
+      - run: echo ${{ secrets[format('{0}_DOMAIN', env.ENVIRONMENT)] }}
