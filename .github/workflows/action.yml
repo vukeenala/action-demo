@@ -15,7 +15,10 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
         env:
           DEPLOY_ENV: '${{ secrets.DEPLOY_ENV }}'
-          DEPLOY_DOMAIN: '${DEPLOY_ENV}_DOMAIN'
-          DEPLOY_ENV_DOMAIN: '${{ secrets[env.DEPLOY_DOMAIN] }}'
-      - if: env.DEPLOY_DOMAIN == 'QA_DOMAIN'
-        run: echo "this is the qa mousiki io domain"
+      - if: env.DEPLOY_ENV == 'QA'
+        env:
+          DEPLOY_DOMAIN: '${{ secrets.QA_DOMAIN }}'
+      - if: env.DEPLOY_ENV == 'DEV'
+        env:
+          DEPLOY_DOMAIN: '${{ secrets.DEV_DOMAIN }}'
+      - run: echo "this is the $DEPLOY_DOMAIN domain"
